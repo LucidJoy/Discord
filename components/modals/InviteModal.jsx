@@ -16,6 +16,7 @@ const InviteModal = () => {
   const origin = useOrigin();
 
   const isModalOpen = isOpen && type === "invite";
+  console.log(data);
   const { server } = data;
 
   const [copied, setCopied] = useState(false);
