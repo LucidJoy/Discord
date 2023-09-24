@@ -2,6 +2,7 @@ import React from "react";
 import { Hash } from "lucide-react";
 import MobileToggle from "../MobileToggle";
 import UserAvatar from "../UserAvatar";
+import SocketIndicator from "../socketIndicator";
 
 // type: channel | conversation
 
@@ -18,6 +19,10 @@ const ChatHeader = ({ serverId, name, type, imageUrl }) => {
       <p className='font-semibold text-base text-black dark:text-white'>
         {name}
       </p>
+
+      <div className='ml-auto flex items-center'>
+        <SocketIndicator />
+      </div>
     </div>
   );
 };
