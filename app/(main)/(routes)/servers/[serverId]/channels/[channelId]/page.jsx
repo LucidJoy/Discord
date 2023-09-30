@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import db from "@/lib/db";
 import ChatHeader from "@/components/chat/ChatHeader";
 import ChatInput from "@/components/chat/ChatInput";
+import ChatMessages from "@/components/chat/ChatMessages";
 
 const ChannelId = async ({ params }) => {
   const profile = await currentProfile();
@@ -35,7 +36,19 @@ const ChannelId = async ({ params }) => {
         type='channel'
       />
 
-      <div className='flex-1'>Future Messages</div>
+      <div className='flex-1 flex flex-col'>
+        <ChatMessages
+          member={member}
+          name={channel.name}
+          chatId={channel.id}
+          type='channel'
+          apiUrl='/api/messages'
+          socketUrl='/api/socket/messages'
+          socketQuery={{ channelId: channel.id, serverId: channel.serverId }}
+          paramKey='channelId'
+          paramValue={channel.id}
+        />
+      </div>
       <ChatInput
         name={channel.name}
         type='channel'
